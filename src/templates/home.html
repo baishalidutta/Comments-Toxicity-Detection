@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			ML App - By Baishali Dutta
+		</div>
+		<h2>Comments Toxicity Detection</h2>
+		
+	</div>
+	</header>
+
+	<div class="ml-container">
+
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter Your Comment Here</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="comment" rows="4" cols="50"></textarea>
+		<br/>
+
+		<input type="submit" class="btn-info" value="predict">
+		
+        	</form>
+	</div>
+	
+	
+    <div class="Toxic rates">&nbsp;</div>
+    
+    <table style="height: 152px;" width="286">
+        <tbody>
+        <tr>
+        <td style="width: 134px;"><strong>Toxic:</strong></td>
+        <td style="width: 136px;">{{ Score1 }}<br></td>
+        </tr>
+        <tr>
+        <td style="width: 134px;"><strong>Severe toxic:</strong></td>
+        <td style="width: 136px;">{{ Score2 }}<br></td>
+        </tr>
+        <tr>
+        <td style="width: 134px;"><strong>Obsence:</strong></td>
+        <td style="width: 136px;">{{ Score3 }}<br></td>
+        </tr>
+        <tr>
+        <td style="width: 134px;"><strong>Threat:</strong></td>
+        <td style="width: 136px;">{{ Score4 }}<br></td>
+        </tr>
+        <tr>
+        <td style="width: 134px;"><strong>Insult:</strong></td>
+        <td style="width: 136px;">{{ Score5 }}<br></td>
+        </tr>
+        <tr>
+        <td style="width: 134px;"><strong>Identity hate:</strong></td>
+        <td style="width: 136px;">{{ Score6 }}<br></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
