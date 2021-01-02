@@ -16,12 +16,12 @@ This repository consists of the machine learning model to rate toxic comments fr
 ```bash
 pip install -r requirements.txt
 ```
-### Building Application
+### Build Application
 
 ```bash
 python src/comments_toxicity.py
 ```
 
-The app is built using Flask API.
+The app is built using Flask Web Framework.
 
-Then go to your browser at http://0.0.0.0:80. The app should be up and running
+Then go to your browser at `http://localhost:80`. The app should be up and running
