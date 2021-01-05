@@ -2,7 +2,7 @@
   <img width="781" alt="comments-toxicity-detection-logo" src="https://user-images.githubusercontent.com/76659596/105877123-eb112280-5fff-11eb-9425-8432e693f92e.png">
 </p>
 
-This repository comprises the machine learning model to rate toxic comments from social networks. The data has been extracted from [Kaggle toxic comments classification challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+This repository consists of the machine learning model to rate toxic comments from social networks. The data has been extracted from [Kaggle toxic comments classification challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
 ### The Model Idea
 
