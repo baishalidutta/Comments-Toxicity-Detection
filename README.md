@@ -4,7 +4,7 @@ This repository comprises the machine learning model to rate toxic comments from
 
 ### The Model Idea
 
-* Clean text: lower all text, remove uncommon signs, expand abbreviations, correct mispelling words
+* Clean text: lower all text, remove uncommon signs, expand abbreviations, correct mispellt words
 * Tokenizing text data
 * Create embedding vector using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
 * Train a deeplearning network with a bidirectional LSTM layer followed by two fully connected layers.
