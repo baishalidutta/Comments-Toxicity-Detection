@@ -1,6 +1,6 @@
 # Comments Toxicity Detection
 
-This repository comprises is the machine learning model to rate toxic comments from social networks. The data has been extracted from [Kaggle toxic comments classification challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+This repository comprises the machine learning model to rate toxic comments from social networks. The data has been extracted from [Kaggle toxic comments classification challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
 ### The Model Idea
 
