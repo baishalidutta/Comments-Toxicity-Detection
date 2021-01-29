@@ -8,7 +8,7 @@ This repository comprises the machine learning model to rate toxic comments from
 
 * Clean text: lower all text, remove uncommon signs, expand abbreviations and correct mispellt words
 * Tokenize text data
-* Create embedding vector using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
+* Create Embedding Vector using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
 * Train a deep learning network with a bidirectional LSTM layer followed by two fully connected layers.
 
 ### Installing Required Packages
