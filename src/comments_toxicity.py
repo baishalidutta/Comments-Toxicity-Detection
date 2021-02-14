@@ -19,7 +19,6 @@ from tensorflow.keras.models import Model, model_from_json
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 from tensorflow.keras.layers import Layer
 from tensorflow.keras import initializers, regularizers, constraints, optimizers, layers
-#import tensorflow.keras.backend as K
 from tensorflow.compat.v1.keras import backend as K
 import tensorflow as tf
 from tensorflow.keras.utils import CustomObjectScope
