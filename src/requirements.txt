@@ -1,8 +1,0 @@
-matplotlib
-textblob
-Keras
-Flask
-tensorflow
-numpy
-pandas
-nltk
