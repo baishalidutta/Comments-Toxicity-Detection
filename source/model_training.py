@@ -3,32 +3,18 @@ __copyright__ = "Copyright (C) 2021 Baishali Dutta"
 __license__ = "Apache License 2.0"
 __version__ = "0.1"
 
-import matplotlib.pyplot as plt
 # -------------------------------------------------------------------------
 #                           Import Libraries
 # -------------------------------------------------------------------------
+import matplotlib.pyplot as plt
 import numpy as np
 from keras.layers import Input, Dense, \
     GlobalMaxPooling1D, LSTM, Bidirectional
 from keras.models import Model
 from sklearn.metrics import roc_auc_score
 
+from config import *
 from data_preprocessing import DataPreprocess
-
-# -------------------------------------------------------------------------
-#                               Configurations
-# -------------------------------------------------------------------------
-EMBEDDING_DIMENSION = 100
-EMBEDDING_FILE_LOC = '../glove/glove.6B.' + str(EMBEDDING_DIMENSION) + 'd.txt'
-TRAINING_DATA_LOC = '../data/train.csv'
-MAX_VOCAB_SIZE = 20000
-MAX_SEQUENCE_LENGTH = 100
-BATCH_SIZE = 128
-EPOCHS = 10
-VALIDATION_SPLIT = 0.2
-DETECTION_CLASSES = ['toxic', 'severe_toxic', 'obscene', 'threat',
-                     'insult', 'identity_hate']
-MODEL_LOC = '../model/comments_toxicity.h5'
 
 
 # -------------------------------------------------------------------------
@@ -62,10 +48,10 @@ def build_rnn_model(data, target_classes, embedding_layer):
 
     # Train the model
     history = model.fit(data,
-              target_classes,
-              batch_size=BATCH_SIZE,
-              epochs=EPOCHS,
-              validation_split=VALIDATION_SPLIT)
+                        target_classes,
+                        batch_size=BATCH_SIZE,
+                        epochs=EPOCHS,
+                        validation_split=VALIDATION_SPLIT)
 
     # Save the model
     model.save(MODEL_LOC)
