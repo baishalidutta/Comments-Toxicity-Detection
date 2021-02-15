@@ -130,5 +130,5 @@ dmypy.json
 
 .DS_Store
 data/*.csv
-glove/glove.6B.*
+model/glove/glove.6B.*
 
