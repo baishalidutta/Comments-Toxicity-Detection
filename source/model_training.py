@@ -6,8 +6,10 @@ __version__ = "0.1"
 # -------------------------------------------------------------------------
 #                           Import Libraries
 # -------------------------------------------------------------------------
+
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from keras.layers import Input, Dense, \
     GlobalMaxPooling1D, LSTM, Bidirectional
 from keras.models import Model
@@ -30,7 +32,7 @@ def build_rnn_model(data, target_classes, embedding_layer):
     # create an LSTM network with a single LSTM
     input_ = Input(shape=(MAX_SEQUENCE_LENGTH,))
     x = embedding_layer(input_)
-    x = Bidirectional(LSTM(15, return_sequences=True))(x)
+    x = Bidirectional(LSTM(units=15, return_sequences=True))(x)
     x = GlobalMaxPooling1D()(x)
 
     #  Sigmoid Classifier
@@ -104,7 +106,9 @@ def plot_training_history(rnn_model, history, data, target_classes):
 #                               Main Execution
 # -------------------------------------------------------------------------
 def execute():
-    preprocessing = DataPreprocess(TRAINING_DATA_LOC)
+    # Import the training data csv file and save it into a dataframe
+    training_data = pd.read_csv(TRAINING_DATA_LOC)
+    preprocessing = DataPreprocess(training_data)
     rnn_model, history = build_rnn_model(preprocessing.padded_data,
                                          preprocessing.target_classes,
                                          preprocessing.embedding_layer)
