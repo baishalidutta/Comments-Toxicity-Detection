@@ -7,48 +7,50 @@ __version__ = "0.1"
 #                           Importing the libraries
 # -------------------------------------------------------------------------
 import gradio as gr
-import numpy as np
 from keras.models import load_model
-from keras.preprocessing import image
+from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import Tokenizer
 
-# -------------------------------------------------------------------------
-#                               Configurations
-# -------------------------------------------------------------------------
-MODEL_LOC = '../model/pneumonia_detection_cnn_model.h5'
+from source.config import *
 
-# load the trained CNN model
-cnn_model = load_model(MODEL_LOC)
+# load the trained model
+rnn_model = load_model(MODEL_LOC)
 
 
-def make_prediction(test_image):
-    test_image = test_image.name
-    test_image = image.load_img(test_image, target_size=(224, 224))
-    test_image = image.img_to_array(test_image) / 255.
-    test_image = np.expand_dims(test_image, axis=0)
-    result = cnn_model.predict(test_image)
-    return {"Normal": str(result[0][0]), "Pneumonia": str(result[0][1])}
+def make_prediction(test_comment):
+    """
+    Predicts the toxicity of the specified comment
+    """
+    test_comment = [test_comment]
+    tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
+    tokenizer.fit_on_texts(test_comment)
+    sequences = tokenizer.texts_to_sequences(test_comment)
+
+    padded_data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
+
+    result = rnn_model.predict(padded_data, len(padded_data), verbose=1)
+    print(result)
+
+    return \
+        {
+            "Toxic": str(result[0][0]),
+            "Severe": str(result[0][1]),
+            "Obscene": str(result[0][2]),
+            "Threat": str(result[0][3]),
+            "Insult": str(result[0][4]),
+            "Hate": str(result[0][5])
+        }
 
 
-image_input = gr.inputs.Image(type="file")
+input_comment = gr.inputs.Textbox(lines=15, placeholder="Enter your comment here")
 
 title = "Comments Toxicity Detection"
-description = "This application uses a Convolutional Neural Network (CNN) model to predict whether a chosen X-ray shows if " \
-              "the person has penumonia diesease or not. To check the model prediction, here are the true labels of the " \
-              "provided examples below: the first 4 images belong to normal whereas the last 4 images are of pneumania " \
-              "category. More specifically, the 5th and 6th images are viral pneumonia infection in nature whereas " \
-              "the last 2 images are bacterial infection in nature."
+description = "This application uses a Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN) " \
+              "model to predict whether a comment is classified as toxic in nature"
 
 gr.Interface(fn=make_prediction,
-             inputs=image_input,
+             inputs=input_comment,
              outputs="label",
-             examples=[["image1_normal.jpeg"],
-                       ["image2_normal.jpeg"],
-                       ["image3_normal.jpeg"],
-                       ["image4_normal.jpeg"],
-                       ["image1_pneumonia_virus.jpeg"],
-                       ["image2_pneumonia_virus.jpeg"],
-                       ["image1_pneumonia_bacteria.jpeg"],
-                       ["image2_pneumonia_bacteria.jpeg"]],
              title=title,
              description=description) \
     .launch()
