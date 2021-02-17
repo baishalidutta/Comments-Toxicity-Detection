@@ -9,19 +9,18 @@
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/baishalidutta/Pneumonia-Detection/issues)
 
-<p align="center">
+<!--p align="center">
   <img width="621" alt="web-app-screencast" src="https://user-images.githubusercontent.com/76659596/107169811-14965a80-69bf-11eb-8f04-df3965eea358.gif">
-</p>
+</p-->
 
 ## Motivation
-The Pneumonia disease is a lung infection (🫁) that inflames the air sacs in one or both lungs. This infection arises when the air sacs get filled with fluid or pus (purulent material). It can be bacterial or viral infection. The main symptoms are - cough with phlegm or pus, fever, chills, and difficulty in breathing. 
+People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people not to express themselves properly.
 
-This disease is responsible for over 15% of all deaths of children under 5 years old worldwide. This proves the severity of this disease and the need of accurate detection. 
+Many social platforms try to find out such harassments or threats in conversations so that such conversations can be easily prevented before it causes any further damage.
 
-The most commonly used method to diagnose pneumonia is through chest radiograph or chest X-ray which depicts the infection as an increased opacity in certain area(s) of the lungs.
+Toxicity detection in comments is one of such methodologies to find out the different types of conversations that can be classified as toxic in nature.
 
-To increase the efficacy and reach of the diagnosis procedure, we can use machine learning alogorithms to identify abnormalities in the chest X-ray images. In this model, a large number of chest X-ray images (both normal and pneumonia) are fed to build `Convolutional Neural Network (CNN)` model for fulfilling the purpose. 
-
+To increase the efficacy in classifying such comments, we can make use of machine learning algorithms to determine the toxicity in comments. In this model, a large number of toxic comments have been fed to build a `Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN)` model for fulfilling the purpose.
 
 ## Requirements
 
@@ -44,7 +43,7 @@ The dataset can be downloaded from [kaggle](https://www.kaggle.com/c/jigsaw-toxi
 * In the `Data Explorer`, you will find four separate zip archives to download
 * Download `test.csv.zip`, `test_labels.csv.zip` and `train.csv.zip`
 * Extract the files
-* Copy the CSV files to this directory (`data`)
+* Copy the CSV files to the `data` directory
 
 The following list enumerates different classes (types) of comments -
 
@@ -61,37 +60,28 @@ The following list enumerates different classes (types) of comments -
 
 `pip3 install -r requirements.txt`
 
+## Model Ideology
+
+* `Clean text`: lower all text, remove uncommon signs, expand abbreviations and correct misspelled words
+* `Tokenize text` data
+* Create `Embedding Vector` using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
+* Train a `Recurrent Neural Network (RNN)` with a `Bidirectional LSTM` layer
+
 ## Usage
 
-Enter into the `source` directory to execute the following source codes.
+Navigate to the `source` directory to execute the following source codes.
 
 * To generate the model on your own, run
 
-`python3 mode_training.py` 
+`python3 model_training.py`
 
 * To evaluate any dataset using the pre-trained model (in the `model` directory), run
 
 `python3 model_evaluation.py`
 
-Note that, for evaluation, `cnn_model_evaluation.py` will use all the images contained inside both `test` and `val` subdirectories (inside `data` directory).
+Note that, for evaluation, `model_evaluation.py` will use the `test.csv` (inside `data` directory).
 
-Alternatively, you can find the whole analysis in the notebook inside the `notebook` directory. To open the notebook, use eithr `jupyter notebook` or `google colab` or any other IDE that supports notebook feature such as `PyCharm Professional`.
-
-## Evaluation 
-
-Our model is trained with 96% accuracy on the training dataset. The accuracies of the model on the `test` and `val` datasets are 91% and 88% respectively. In both cases, the `f1-score` and `ROC_AUC Score` are quite high as shown below. 
-
-### On Test Dataset (624 images, 234 `Normal` and 390 `Pneumonia`)
-
-<p align="center">
-<img width="960" alt="Screenshot 2021-02-07 at 17 07 23" src="https://user-images.githubusercontent.com/76659596/107152321-93f83f80-6967-11eb-95b4-0bfb3ccae6d7.png">
-</p>
-
-### On Validation Dataset (16 images, 8 `Normal` and 8 `Pneumonia`)
-
-<p align="center">
-<img width="960" alt="Screenshot 2021-02-07 at 17 10 07" src="https://user-images.githubusercontent.com/76659596/107152360-ba1ddf80-6967-11eb-90cb-dfaeca31f275.png">
-</p>
+Alternatively, you can find the whole analysis in the notebook inside the `notebook` directory. To open the notebook, use either `jupyter notebook` or `google colab` or any other IDE that supports notebook feature such as `PyCharm Professional`.
 
 ## Web Application
 
