@@ -42,7 +42,7 @@ def make_prediction(test_comment):
         }
 
 
-input_comment = gr.inputs.Textbox(lines=15, placeholder="Enter your comment here")
+input_comment = gr.inputs.Textbox(lines=17, placeholder="Enter your comment here")
 
 title = "Comments Toxicity Detection"
 description = "This application uses a Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN) " \
