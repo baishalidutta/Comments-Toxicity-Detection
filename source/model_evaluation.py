@@ -16,7 +16,7 @@ from config import *
 from data_preprocessing import DataPreprocess
 
 # -------------------------------------------------------------------------
-#                   Prepare the Test Data
+#                   Prepare Test Data
 # -------------------------------------------------------------------------
 test_label = pd.read_csv('../data/test_labels.csv')
 test_comments = pd.read_csv('../data/test.csv')
