@@ -43,13 +43,13 @@ pred = rnn_model.predict(preprocessing.padded_data, steps=len(preprocessing.padd
 pred_binary = pred > 0.5
 
 aucs = []
-for j in range(6):
+for j in range(len(DETECTION_CLASSES)):
     auc = roc_auc_score(preprocessing.target_classes[:, j], pred_binary[:, j])
     aucs.append(auc)
 print(f'Average ROC_AUC Score on Test Data: {np.mean(aucs)}')
 
 accuracy = []
-for j in range(6):
+for j in range(len(DETECTION_CLASSES)):
     acc = accuracy_score(preprocessing.target_classes[:, j], pred_binary[:, j])
     accuracy.append(acc)
 print(f'Average Accuracy Score on Test Data: {np.mean(accuracy)}')
