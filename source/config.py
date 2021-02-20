@@ -22,6 +22,7 @@ DETECTION_CLASSES = [
     'obscene',
     'threat',
     'insult',
-    'identity_hate']
+    'identity_hate',
+    'neutral']
 MODEL_LOC = '../model/comments_toxicity.h5'
 TOKENIZER_LOC = '../model/tokenizer.pickle'
