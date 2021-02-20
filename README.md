@@ -62,7 +62,7 @@ The following list enumerates different classes (types) of comments -
 
 ## Model Ideology
 
-* `Clean text`: lower all text, remove uncommon signs, expand abbreviations and correct misspelled words
+* `Clean text`: lower all text, remove uncommon signs, expand abbreviations, correct misspelled words, remove punctuations, emojis and stop words and finally apply lemmatisation
 * `Tokenize text` data
 * Create `Embedding Vector` using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
 * Train a `Recurrent Neural Network (RNN)` with a `Bidirectional LSTM` layer
