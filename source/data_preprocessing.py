@@ -18,6 +18,22 @@ from data_cleaning import clean_text_column
 
 
 # -------------------------------------------------------------------------
+#                           Utility Functions
+# -------------------------------------------------------------------------
+def sum_of_columns(dataframe, columns):
+    """
+    Calculates the sum of the specified columns from the specified dataframe
+    :param dataframe: the dataframe
+    :param columns: the columns of the dataframe
+    :return: the sum of the specified columns
+    """
+    temp = 0
+    for cols in columns:
+        temp += dataframe[cols]
+    return temp
+
+
+# -------------------------------------------------------------------------
 #                           Data Preprocessing
 # -------------------------------------------------------------------------
 class DataPreprocess:
@@ -49,6 +65,11 @@ class DataPreprocess:
 
         # Print the total words found
         print(f'Total of {len(word_to_vector)} word vectors are found.')
+
+        # Add a new target class (label) 'neutral' to the dataframe
+        cols = DETECTION_CLASSES.copy()
+        cols.remove('neutral')
+        data['neutral'] = np.where(sum_of_columns(data, cols) > 0, 0, 1)
 
         # Cleaning the comment texts
         data['comment_text'] = clean_text_column(data['comment_text'])

@@ -48,19 +48,20 @@ def make_prediction(input_comment):
     return \
         {
             "Toxic": str(result[0][0]),
-            "Severe": str(result[0][1]),
+            "Very Toxic": str(result[0][1]),
             "Obscene": str(result[0][2]),
             "Threat": str(result[0][3]),
             "Insult": str(result[0][4]),
-            "Hate": str(result[0][5])
+            "Hate": str(result[0][5]),
+            "Neutral": str(result[0][6])
         }
 
 
 comment = gr.inputs.Textbox(lines=17, placeholder="Enter your comment here")
 
 title = "Comments Toxicity Detection"
-description = "This application uses a Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN) " \
-              "model to predict whether a comment is classified as toxic in nature"
+description = "This application uses a Bidirectional Long Short-Term Memory (LSTM) Recurrent Neural Network (RNN) " \
+              "model to predict the inappropriateness of a comment"
 
 gr.Interface(fn=make_prediction,
              inputs=comment,
