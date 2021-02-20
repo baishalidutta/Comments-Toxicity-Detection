@@ -9,9 +9,9 @@
 ![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/baishalidutta/Pneumonia-Detection/issues)
 
-<!--p align="center">
-  <img width="621" alt="web-app-screencast" src="https://user-images.githubusercontent.com/76659596/107169811-14965a80-69bf-11eb-8f04-df3965eea358.gif">
-</p-->
+<p align="center">
+  <img width="721" alt="web-app-screencast" src="https://user-images.githubusercontent.com/76659596/108608735-37663d00-73c9-11eb-8e6e-304dd535f527.gif">
+</p>
 
 ## Motivation
 People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people not to express themselves properly.
@@ -30,7 +30,10 @@ To increase the efficacy in classifying such comments, we can make use of machin
 - matplotlib 3.3.3+
 - numpy 1.19.5+
 - pandas 1.2.1+
-- scikit-learn 0.24.1+
+- scikit-learn 0.24.1+ 
+- nltk 3.5+
+- spacy 3.0.3+
+- textblob 0.15.3+
 - gradio 1.5.3+
 
 ## Dataset
@@ -47,7 +50,7 @@ The dataset can be downloaded from [kaggle](https://www.kaggle.com/c/jigsaw-toxi
 
 The following list enumerates different classes (types) of comments -
 
-<img width="226" alt="Toxicity Type" src="https://user-images.githubusercontent.com/76659596/107921201-7b42e780-6f6e-11eb-9262-f7db3172ad74.png">
+<img width="426" alt="Toxicity Type" src="https://user-images.githubusercontent.com/76659596/108608526-b6f30c80-73c7-11eb-801e-f8fe99572e5a.png">
 
 
 ## Installation
@@ -62,7 +65,15 @@ The following list enumerates different classes (types) of comments -
 
 ## Model Ideology
 
-* `Clean text`: lower all text, remove uncommon signs, expand abbreviations, correct misspelled words, remove punctuations, emojis and stop words and finally apply lemmatisation
+* `Clean text`: 
+    * lower all text
+    * remove uncommon signs
+    * expand abbreviations
+    * correct misspelled words
+    * remove punctuations
+    * remove emojis
+    * remove stop words
+    * apply lemmatisation
 * `Tokenize text` data
 * Create `Embedding Vector` using [Glove.6B](https://nlp.stanford.edu/projects/glove/)
 * Train a `Recurrent Neural Network (RNN)` with a `Bidirectional LSTM` layer
@@ -79,7 +90,7 @@ Navigate to the `source` directory to execute the following source codes.
 
 `python3 model_evaluation.py`
 
-Note that, for evaluation, `model_evaluation.py` will use the `test.csv` (inside `data` directory).
+Note that, for evaluation, `model_evaluation.py` will use the `test.csv` and `test_labels.csv` (inside `data` directory).
 
 Alternatively, you can find the whole analysis in the notebook inside the `notebook` directory. To open the notebook, use either `jupyter notebook` or `google colab` or any other IDE that supports notebook feature such as `PyCharm Professional`.
 
