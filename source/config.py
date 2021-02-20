@@ -14,7 +14,7 @@ TEST_DATA_COMMENTS = '../data/test.csv'
 MAX_VOCAB_SIZE = 20000
 MAX_SEQUENCE_LENGTH = 100
 BATCH_SIZE = 128
-EPOCHS = 10
+EPOCHS = 30
 VALIDATION_SPLIT = 0.2
 DETECTION_CLASSES = [
     'toxic',
@@ -24,3 +24,4 @@ DETECTION_CLASSES = [
     'insult',
     'identity_hate']
 MODEL_LOC = '../model/comments_toxicity.h5'
+TOKENIZER_LOC = '../model/tokenizer.pickle'
