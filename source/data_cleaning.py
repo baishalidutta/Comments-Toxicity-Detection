@@ -145,7 +145,7 @@ def fix_misspelled_words_on_string(text):
     :return: the fixed text
     """
     b = TextBlob(text)
-    return b.correct()
+    return str(b.correct())
 
 
 def fix_misspelled_words(text_column):
@@ -278,7 +278,7 @@ def clean_text(text):
     """
     text = convert_to_lower_case_on_string(text)
     text = apply_contraction_mapping_on_string(text)
-    text = fix_misspelled_words_on_string2(text)
+    text = fix_misspelled_words_on_string(text)
     text = remove_punctuations_on_string(text)
     text = remove_emojis_on_string(text)
     text = remove_stopwords_on_string(text)
