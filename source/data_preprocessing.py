@@ -4,14 +4,17 @@ __license__ = "Apache License 2.0"
 __version__ = "0.1"
 
 # -------------------------------------------------------------------------
-#                           Importing Libraries
+#                           Import Libraries
 # -------------------------------------------------------------------------
+import pickle
+
 import numpy as np
 from keras.layers import Embedding
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
 
 from config import *
+from data_cleaning import clean_text_column
 
 
 # -------------------------------------------------------------------------
@@ -22,13 +25,15 @@ class DataPreprocess:
     Preprocess the data
     """
 
-    def __init__(self, data):
+    def __init__(self, data, do_load_existing_tokenizer=False):
         """
         Initializes and prepares the data with necessary steps either to be trained
         or evaluated by the RNN model
         :param data: the dataframe extracted from the .csv file
+        :param do_load_existing_tokenizer: true if existing tokenizer should be loaded or false instead
         """
         self.data = data
+        self.doLoadExistingTokenizer = do_load_existing_tokenizer
 
         # The pre-trained word vectors used (http://nlp.stanford.edu/data/glove.6B.zip)
         word_to_vector = {}
@@ -42,29 +47,42 @@ class DataPreprocess:
                 # adding it in the word_to_vector dictionary
                 word_to_vector[word] = np.asarray(word_vec, dtype='float32')
 
-        # print the total words found
+        # Print the total words found
         print(f'Total of {len(word_to_vector)} word vectors are found.')
+
+        # Cleaning the comment texts
+        data['comment_text'] = clean_text_column(data['comment_text'])
 
         # Split the data into feature and target labels
         comments = data['comment_text'].values
         self.target_classes = data[DETECTION_CLASSES].values
 
-        # Convert the comments (strings) into integers
-        tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
-        tokenizer.fit_on_texts(comments)
+        if not do_load_existing_tokenizer:
+            # Convert the comments (strings) into integers
+            tokenizer = Tokenizer(num_words=MAX_VOCAB_SIZE)
+            tokenizer.fit_on_texts(comments)
+        else:
+            with open(TOKENIZER_LOC, 'rb') as handle:
+                tokenizer = pickle.load(handle)
+
         sequences = tokenizer.texts_to_sequences(comments)
 
         # Word to integer mapping
         word_to_index = tokenizer.word_index
         print(f'Found {len(word_to_index)} unique tokens')
 
-        # pad sequences so that we get a N x T matrix
+        if not do_load_existing_tokenizer:
+            # Save tokenizer
+            print('Saving tokens ...')
+            with open(TOKENIZER_LOC, 'wb') as handle:
+                pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+        # Pad sequences so that we get a N x T matrix
+        # TODO: check whether to choose post or pre padding
         self.padded_data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
         print('Shape of data tensor:', self.padded_data.shape)
 
-        # Constructing the Embedding matrix
-
-        # Prepare the embedding matrix
+        # Construct and Prepare Embedding matrix
         num_words = min(MAX_VOCAB_SIZE, len(word_to_index) + 1)
         embedding_matrix = np.zeros((num_words, EMBEDDING_DIMENSION))
         for word, i in word_to_index.items():
