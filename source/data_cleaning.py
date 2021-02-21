@@ -269,7 +269,7 @@ def clean_text(text):
     The cleaning procedure is as follows:
     1. Convert the context to lower case
     2. Apply contraction mapping in which we fix shorter usages of english sentences
-    3. Fixe misspelled words
+    3. Fix misspelled words
     4. Remove all punctuations
     5. Remove all emojis
     6. Remove all stop words

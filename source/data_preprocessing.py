@@ -28,8 +28,8 @@ def sum_of_columns(dataframe, columns):
     :return: the sum of the specified columns
     """
     temp = 0
-    for cols in columns:
-        temp += dataframe[cols]
+    for col in columns:
+        temp += dataframe[col]
     return temp
 
 
