@@ -102,8 +102,7 @@ To run the web application locally, go to the `webapp` directory and execute:
 
 This will start a local server that you can access in your browser. You can type in any comment and find out what toxicity the model determines.
 
-You can, alternatively, try out the hosted web application on <b>AWS</b> [here](#).
-
+You can, alternatively, try out the hosted web application [here](https://gradio.app/g/baishalidutta/Comments-Toxicity-Detection).
 
 ## Developer
 
