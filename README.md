@@ -1,19 +1,5 @@
-<p align="center">
-  <img width="621" alt="logo" src="https://user-images.githubusercontent.com/76659596/105877123-eb112280-5fff-11eb-9425-8432e693f92e.png">
-</p>
-
-[![baishalidutta - Comments-Toxicity-Detection](https://img.shields.io/static/v1?label=baishalidutta&message=Comments-Toxicity-Detection&color=blue&logo=github)](https://github.com/baishalidutta/Comments-Toxicity-Detection)
-[![License - Apache-2.0](https://img.shields.io/badge/License-Apache-blue)](#license)
-[![Build - Passing](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/baishalidutta/Comments-Toxicity-Detection/runs/1485969918)
-[![GitHub release](https://img.shields.io/github/release/baishalidutta/Comments-Toxicity-Detection?include_prereleases&sort=semver)](https://github.com/baishalidutta/Comments-Toxicity-Detection/releases/)
-![Python](https://img.shields.io/badge/python-v3.7+-blue.svg)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/baishalidutta/Pneumonia-Detection/issues)
-
-<p align="center">
-  <img width="721" alt="web-app-screencast" src="https://user-images.githubusercontent.com/76659596/108608735-37663d00-73c9-11eb-8e6e-304dd535f527.gif">
-</p>
-
 ## Motivation
+
 People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people not to express themselves properly.
 
 Many social platforms try to find out such harassments or threats in conversations so that such conversations can be easily prevented before it causes any further damage.

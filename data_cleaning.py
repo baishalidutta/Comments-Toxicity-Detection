@@ -9,15 +9,14 @@ __version__ = "0.1"
 import re
 
 import nltk
-import spacy
 from nltk.corpus import stopwords
-from textblob import TextBlob
+from textblob import TextBlob, Word
 
 # -------------------------------------------------------------------------
 #                        One-shot Instance Creation
 # -------------------------------------------------------------------------
-nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 nltk.download('stopwords')
+nltk.download('wordnet')
 stop_words = stopwords.words('english')
 
 
@@ -226,8 +225,13 @@ def lemmatize_on_string(text):
     :param text: the text which needs to be lemmatized
     :return: the lemmatized text
     """
-    doc = nlp(text)
-    return " ".join([token.lemma_ for token in doc])
+    blob = TextBlob(text).split()
+    result=[]
+    for word in blob:
+      expected_str = Word(word)
+      expected_str = expected_str.lemmatize()
+      result.append(expected_str)
+    return " ".join(result)
 
 
 def lemmatize(text_column):
