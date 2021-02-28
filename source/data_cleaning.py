@@ -220,23 +220,23 @@ def remove_stopwords(text_column):
         lambda x: remove_stopwords_on_string(x))
 
 
-def lemmatize_on_string(text):
+def lemmatise_on_string(text):
     """
-    Lemmatizes the specified text
-    :param text: the text which needs to be lemmatized
-    :return: the lemmatized text
+    Lemmatises the specified text
+    :param text: the text which needs to be lemmatised
+    :return: the lemmatised text
     """
     doc = nlp(text)
     return " ".join([token.lemma_ for token in doc])
 
 
-def lemmatize(text_column):
+def lemmatise(text_column):
     """
-    Lemmatizes the text of the specified text column
-    :param text_column: the text column which needs to be lemmatized
-    :return: the lemmatized text column
+    Lemmatises the text of the specified text column
+    :param text_column: the text column which needs to be lemmatised
+    :return: the lemmatised text column
     """
-    return text_column.apply(lemmatize_on_string)
+    return text_column.apply(lemmatise_on_string)
 
 
 def clean_text_column(text_column):
@@ -249,7 +249,7 @@ def clean_text_column(text_column):
     4. Remove all punctuations
     5. Remove all emojis
     6. Remove all stop words
-    7. Apply lemmatisation
+    7. Apply Lemmatisation
     :return: the text column with the cleaned data
     """
     text_column = convert_to_lower_case(text_column)
@@ -258,7 +258,7 @@ def clean_text_column(text_column):
     text_column = remove_punctuations(text_column)
     text_column = remove_emojis(text_column)
     text_column = remove_stopwords(text_column)
-    text_column = lemmatize(text_column)
+    text_column = lemmatise(text_column)
 
     return text_column
 
@@ -273,7 +273,7 @@ def clean_text(text):
     4. Remove all punctuations
     5. Remove all emojis
     6. Remove all stop words
-    7. Apply lemmatization
+    7. Apply Lemmatisation
     :return: the cleaned text
     """
     text = convert_to_lower_case_on_string(text)
@@ -282,6 +282,6 @@ def clean_text(text):
     text = remove_punctuations_on_string(text)
     text = remove_emojis_on_string(text)
     text = remove_stopwords_on_string(text)
-    text = lemmatize_on_string(text)
+    text = lemmatise_on_string(text)
 
     return text
