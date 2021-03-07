@@ -50,7 +50,8 @@ The dataset can be downloaded from [kaggle](https://www.kaggle.com/c/jigsaw-toxi
 
 The following list enumerates different classes (types) of comments -
 
-<img width="426" alt="Toxicity Type" src="https://user-images.githubusercontent.com/76659596/108608526-b6f30c80-73c7-11eb-801e-f8fe99572e5a.png">
+| Toxic | Very Toxic | Obscene | Threat | Insult | Hate | Neutral |
+|-------|------------|---------|--------|--------|------|---------|
 
 
 ## Installation
