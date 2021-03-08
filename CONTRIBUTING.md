@@ -19,7 +19,7 @@ A proper header must be in place for any file contributed to the project. For a 
 __author__ = "Author Name <legal entity>"
 __copyright__ = "Copyright (C) <year> Author Name <legal entity>"
 __license__ = "Apache License 2.0"
-__version__ = "0.1"
+__version__ = "VERSION_NUMBER"
  ```
 
  Please ensure \<year\> is replaced with the current year or range (e.g. 2017 or 2015, 2017).
@@ -30,7 +30,7 @@ __version__ = "0.1"
 __author__ = "Author Name <legal entity> and others"
 __copyright__ = "Copyright (C) <year> Author Name <legal entity>"
 __license__ = "Apache License 2.0"
-__version__ = "0.1"
+__version__ = "VERSION_NUMBER"
  ```
 
 ### How to Contribute
