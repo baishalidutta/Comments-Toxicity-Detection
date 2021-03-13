@@ -82,9 +82,6 @@ def evaluate_accuracy_score(preprocessing, prediction_binary):
     return np.mean(accuracy)
 
 
-# -------------------------------------------------------------------------
-#                               Main Execution
-# -------------------------------------------------------------------------
 def execute():
     test_data = prepare_test_data()
     preprocessing = DataPreprocess(test_data, do_load_existing_tokenizer=True)
@@ -96,5 +93,8 @@ def execute():
     print(f'Average Accuracy Score on Test Data: {accuracy}')
 
 
+# -------------------------------------------------------------------------
+#                               Main Execution
+# -------------------------------------------------------------------------
 if __name__ == '__main__':
     execute()

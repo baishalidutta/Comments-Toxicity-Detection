@@ -121,11 +121,10 @@ def plot_training_history(rnn_model, history, data, target_classes):
     print(f'Average ROC_AUC Score: {np.mean(aucs)}')
 
 
-# -------------------------------------------------------------------------
-#                               Main Execution
-# -------------------------------------------------------------------------
 def execute():
-    # Import the training data csv file and save it into a dataframe
+    """
+    Import the training data csv file and save it into a dataframe
+    """
     training_data = pd.read_csv(TRAINING_DATA_LOC)
 
     preprocessing = DataPreprocess(training_data)
@@ -138,5 +137,8 @@ def execute():
                           preprocessing.target_classes)
 
 
+# -------------------------------------------------------------------------
+#                               Main Execution
+# -------------------------------------------------------------------------
 if __name__ == '__main__':
     execute()

@@ -6,9 +6,8 @@ __version__ = "0.1"
 # -------------------------------------------------------------------------
 #                           Import Libraries
 # -------------------------------------------------------------------------
-import pickle
-
 import numpy as np
+import pickle
 from keras.layers import Embedding
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer

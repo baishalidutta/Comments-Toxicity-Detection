@@ -6,9 +6,8 @@ __version__ = "0.1"
 # -------------------------------------------------------------------------
 #                           Import Libraries
 # -------------------------------------------------------------------------
-import re
-
 import nltk
+import re
 import spacy
 from nltk.corpus import stopwords
 from textblob import TextBlob
