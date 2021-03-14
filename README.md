@@ -24,7 +24,7 @@ To increase the efficacy in classifying such comments, we can make use of machin
 
 ## Requirements
 
-- Python 3.7.x
+- Python 3.7.0+
 - Tensorflow 2.4.1+
 - Keras 2.4.3+
 - matplotlib 3.3.3+

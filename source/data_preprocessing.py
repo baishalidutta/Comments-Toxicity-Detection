@@ -45,7 +45,7 @@ class DataPreprocess:
         Initializes and prepares the data with necessary steps either to be trained
         or evaluated by the RNN model
         :param data: the dataframe extracted from the .csv file
-        :param do_load_existing_tokenizer: true if existing tokenizer should be loaded or false instead
+        :param do_load_existing_tokenizer: True if existing tokenizer should be loaded or False instead
         """
         self.data = data
         self.doLoadExistingTokenizer = do_load_existing_tokenizer
@@ -100,7 +100,7 @@ class DataPreprocess:
         # Pad sequences so that we get a N x T matrix
         # TODO: check whether to choose post or pre padding
         self.padded_data = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
-        print('Shape of data tensor:', self.padded_data.shape)
+        print('Shape of Data Tensor:', self.padded_data.shape)
 
         # Construct and Prepare Embedding matrix
         num_words = min(MAX_VOCAB_SIZE, len(word_to_index) + 1)
