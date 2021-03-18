@@ -38,7 +38,7 @@ To increase the efficacy in classifying such comments, we can make use of machin
 
 ## Dataset
 
-The dataset can be downloaded from [kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge). Use the underlying download link to download the dataset.
+You can downloaded the dataset from [kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge). Use the underlying download link to download the dataset.
 
 ### Instructions to follow
 
