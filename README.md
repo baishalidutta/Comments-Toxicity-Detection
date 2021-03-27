@@ -14,13 +14,15 @@
 </p>
 
 ## Motivation
-People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people not to express themselves properly.
+People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people to not express themselves properly.
 
-Many social platforms try to find out such harassments or threats in conversations so that such conversations can be easily prevented before it causes any further damage.
+Many social platforms try to find out such harassments or threats in conversations so that such conversations can easily be prevented before it causes any further damage.
 
 Toxicity detection in comments is one of such methodologies to find out the different types of conversations that can be classified as toxic in nature.
 
-To increase the efficacy in classifying such comments, we can make use of machine learning algorithms to determine the toxicity in comments. In this model, a large number of toxic comments have been fed to build a `Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN)` model for fulfilling the purpose.
+To increase the efficacy in classifying such comments, we can make use of machine learning algorithms to determine the toxicity in comments. 
+
+In this model, many toxic comments have been fed to build a `Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN)` model for fulfilling the purpose.
 
 ## Requirements
 
