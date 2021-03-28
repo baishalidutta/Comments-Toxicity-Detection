@@ -231,7 +231,7 @@ def lemmatise_on_string(text):
 
 def lemmatise(text_column):
     """
-    Lemmatises the text of the specified text column
+    Lemmatises the text in the specified text column
     :param text_column: the text column which needs to be lemmatised
     :return: the lemmatised text column
     """
@@ -240,7 +240,7 @@ def lemmatise(text_column):
 
 def clean_text_column(text_column):
     """
-    Cleans the data specified in the text column
+    Cleans the text specified in the text column
     The cleaning procedure is as follows:
     1. Convert the context to lower case
     2. Apply contraction mapping in which we fix shorter usages of english sentences
@@ -249,6 +249,7 @@ def clean_text_column(text_column):
     5. Remove all emojis
     6. Remove all stop words
     7. Apply Lemmatisation
+    :param text_column: the text column which needs to be cleaned
     :return: the text column with the cleaned data
     """
     text_column = convert_to_lower_case(text_column)
@@ -273,6 +274,7 @@ def clean_text(text):
     5. Remove all emojis
     6. Remove all stop words
     7. Apply Lemmatisation
+    :param text: the text which needs to be cleaned
     :return: the cleaned text
     """
     text = convert_to_lower_case_on_string(text)
