@@ -22,7 +22,7 @@ Toxicity detection in comments is one of such methodologies to find out the diff
 
 To increase the efficacy in classifying such comments, we can make use of machine learning algorithms to determine the toxicity in comments. 
 
-In this model, many toxic comments have been fed to build a `Bidirectional Long short-term memory (LSTM) Recurrent Neural Network (RNN)` model for fulfilling the purpose.
+In this model, many toxic comments have been fed to build a `Bidirectional Long Short-Term Memory (LSTM) Recurrent Neural Network (RNN)` model for fulfilling the purpose.
 
 ## Requirements
 
