@@ -37,7 +37,7 @@ def sum_of_columns(dataframe, columns):
 # -------------------------------------------------------------------------
 class DataPreprocess:
     """
-    Preprocess the data
+    Preprocesses the data
     """
 
     def __init__(self, data, do_load_existing_tokenizer=False):
@@ -70,7 +70,7 @@ class DataPreprocess:
         cols.remove('neutral')
         data['neutral'] = np.where(sum_of_columns(data, cols) > 0, 0, 1)
 
-        # Cleaning the comment texts
+        # Clean the comment texts
         data['comment_text'] = clean_text_column(data['comment_text'])
 
         # Split the data into feature and target labels
