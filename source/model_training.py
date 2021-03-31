@@ -27,8 +27,8 @@ def build_rnn_model(data, target_classes, embedding_layer):
     """
     Build and Train the RNN architecture (Bidirectional LSTM)
     :param data: the preprocessed padded data
-    :param embedding_layer: Embedding layer comprising preprocessed comments
     :param target_classes: Assigned target labels for the comments
+    :param embedding_layer: Embedding layer comprising preprocessed comments
     :return: the trained model
     """
     # create an LSTM network with a single LSTM
