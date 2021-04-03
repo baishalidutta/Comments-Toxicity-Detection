@@ -24,7 +24,7 @@ stop_words = stopwords.words('english')
 #                           Data Cleaning
 # -------------------------------------------------------------------------
 
-def convert_to_lower_case_on_string(text):
+def convert_to_lower_case(text):
     """
     Coverts the specified text to lower case
     :param text: the text to convert
@@ -33,17 +33,7 @@ def convert_to_lower_case_on_string(text):
     return " ".join(text.lower() for text in text.split())
 
 
-def convert_to_lower_case(text_column):
-    """
-    Coverts the text in the specified column to lower case
-    :param text_column: the text column whose context needs to be converted
-    :return: the text column containing the lower cased text
-    """
-    return text_column.apply(
-        lambda x: convert_to_lower_case_on_string(x))
-
-
-def apply_contraction_mapping_on_string(text):
+def apply_contraction_mapping(text):
     """
     Applies the contraction mapping to the specified text
     :param text: the text on which the contraction will be mapped
@@ -100,16 +90,7 @@ def apply_contraction_mapping_on_string(text):
     return text
 
 
-def apply_contraction_mapping(text_column):
-    """
-    Applies the contraction mapping to the text in the specified column
-    :param text_column: the text column on which the contraction will be mapped
-    :return: the text column after the application of contraction mapping
-    """
-    return text_column.apply(lambda x: apply_contraction_mapping_on_string(x))
-
-
-def fix_misspelled_words_on_string2(text):
+def fix_misspelled_words2(text):
     """
     Fixes the misspelled words on the specified text (uses predefined misspelled dictionary)
     :param text: The text to be fixed
@@ -137,7 +118,7 @@ def fix_misspelled_words_on_string2(text):
     return text
 
 
-def fix_misspelled_words_on_string(text):
+def fix_misspelled_words(text):
     """
     Fixes the misspelled words on the specified text (uses TextBlob model)
     :param text: The text to be fixed
@@ -147,34 +128,16 @@ def fix_misspelled_words_on_string(text):
     return str(b.correct())
 
 
-def fix_misspelled_words(text_column):
-    """
-    Fixes the misspelled words on the text column
-    :param text_column: The text column to be fixed
-    :return: the text column containing the text
-    """
-    return text_column.apply(lambda x: fix_misspelled_words_on_string2(x))
-
-
-def remove_punctuations_on_string(text):
+def remove_punctuations(text):
     """
     Removes all punctuations from the specified text
     :param text: the text whose punctuations to be removed
     :return: the text after removing the punctuations
     """
-    return text.replace('[^\w\s]', '')
+    return text.replace(r'[^\w\s]', '')
 
 
-def remove_punctuations(text_column):
-    """
-    Removes all punctuations from the text of the specified text column
-    :param text_column: the text column whose punctuations to be removed
-    :return: the text column after removing the punctuations
-    """
-    return remove_punctuations_on_string(text_column.str)
-
-
-def remove_emojis_on_string(text):
+def remove_emojis(text):
     """
     Removes emojis from the specified text
     :param text: the text whose emojis need to be removed
@@ -191,16 +154,7 @@ def remove_emojis_on_string(text):
     return emoji_pattern.sub(r'', text)
 
 
-def remove_emojis(text_column):
-    """
-    Removes emojis from the text of the specified column
-    :param text_column: the text column whose emojis need to be removed
-    :return: the text column after removing the emojis
-    """
-    return text_column.apply(lambda x: remove_emojis_on_string(x))
-
-
-def remove_stopwords_on_string(text):
+def remove_stopwords(text):
     """
     Removes all stop words from the specified text
     :param text: the text whose stop words need to be removed
@@ -209,17 +163,7 @@ def remove_stopwords_on_string(text):
     return " ".join(x for x in text.split() if x not in stop_words)
 
 
-def remove_stopwords(text_column):
-    """
-    Removes all stop words from the text of the specified column
-    :param text_column: the text column whose stop words need to be removed
-    :return: the text column after removing the stop words
-    """
-    return text_column.apply(
-        lambda x: remove_stopwords_on_string(x))
-
-
-def lemmatise_on_string(text):
+def lemmatise(text):
     """
     Lemmatises the specified text
     :param text: the text which needs to be lemmatised
@@ -227,15 +171,6 @@ def lemmatise_on_string(text):
     """
     doc = nlp(text)
     return " ".join([token.lemma_ for token in doc])
-
-
-def lemmatise(text_column):
-    """
-    Lemmatises the text in the specified text column
-    :param text_column: the text column which needs to be lemmatised
-    :return: the lemmatised text column
-    """
-    return text_column.apply(lemmatise_on_string)
 
 
 def clean_text_column(text_column):
@@ -252,15 +187,7 @@ def clean_text_column(text_column):
     :param text_column: the text column which needs to be cleaned
     :return: the text column with the cleaned data
     """
-    text_column = convert_to_lower_case(text_column)
-    text_column = apply_contraction_mapping(text_column)
-    text_column = fix_misspelled_words(text_column)
-    text_column = remove_punctuations(text_column)
-    text_column = remove_emojis(text_column)
-    text_column = remove_stopwords(text_column)
-    text_column = lemmatise(text_column)
-
-    return text_column
+    return text_column.apply(lambda x: clean_text(x))
 
 
 def clean_text(text):
@@ -277,12 +204,12 @@ def clean_text(text):
     :param text: the text which needs to be cleaned
     :return: the cleaned text
     """
-    text = convert_to_lower_case_on_string(text)
-    text = apply_contraction_mapping_on_string(text)
-    text = fix_misspelled_words_on_string(text)
-    text = remove_punctuations_on_string(text)
-    text = remove_emojis_on_string(text)
-    text = remove_stopwords_on_string(text)
-    text = lemmatise_on_string(text)
+    text = convert_to_lower_case(text)
+    text = apply_contraction_mapping(text)
+    text = fix_misspelled_words2(text)
+    text = remove_punctuations(text)
+    text = remove_emojis(text)
+    text = remove_stopwords(text)
+    text = lemmatise(text)
 
     return text
