@@ -7,6 +7,7 @@ __version__ = "0.1"
 #                           Import Libraries
 # -------------------------------------------------------------------------
 
+import click
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -31,7 +32,7 @@ def build_rnn_model(data, target_classes, embedding_layer):
     :param embedding_layer: Embedding layer comprising preprocessed comments
     :return: the trained model
     """
-    # create an LSTM network with a single LSTM
+    # Create an LSTM Network with a single LSTM
     input_ = Input(shape=(MAX_SEQUENCE_LENGTH,))
     x = embedding_layer(input_)
     x = Bidirectional(LSTM(units=64,
@@ -47,15 +48,15 @@ def build_rnn_model(data, target_classes, embedding_layer):
 
     model = Model(input_, output)
 
-    # Display the model
+    # Display Model
     model.summary()
 
-    # Compile the model
+    # Compile Model
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
 
-    # Defining the callbacks
+    # Define Callbacks
     # TODO Check whether to use the restore_best_weights
     early_stop = EarlyStopping(monitor='val_loss',
                                patience=5,
@@ -67,7 +68,7 @@ def build_rnn_model(data, target_classes, embedding_layer):
                                  save_best_only=True,
                                  mode='min')
 
-    # Fit the model
+    # Fit Model
     history = model.fit(data,
                         target_classes,
                         batch_size=BATCH_SIZE,
@@ -76,7 +77,7 @@ def build_rnn_model(data, target_classes, embedding_layer):
                         callbacks=[early_stop, checkpoint],
                         verbose=1)
 
-    # Return model training history
+    # Return Model Training History
     return model, history
 
 
@@ -121,11 +122,14 @@ def plot_training_history(rnn_model, history, data, target_classes):
     print(f'Average ROC_AUC Score: {np.mean(aucs)}')
 
 
-def execute():
+@click.command()
+@click.option('--data', default=TRAINING_DATA_LOC, help="Training Data (CSV) Location")
+def execute(data):
     """
     Import the training data csv file and save it into a dataframe
+    :param data: the training data (CSV) location
     """
-    training_data = pd.read_csv(TRAINING_DATA_LOC)
+    training_data = pd.read_csv(data)
 
     preprocessing = DataPreprocess(training_data)
     rnn_model, history = build_rnn_model(preprocessing.padded_data,

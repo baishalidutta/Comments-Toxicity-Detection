@@ -89,6 +89,10 @@ Navigate to the `source` directory to execute the following source codes.
 
 `python3 model_training.py`
 
+* You can also provide your own data:
+
+`python3 model_training.py --data=csv_file_location`
+
 * To evaluate any dataset using the pre-trained model (in the `model` directory), run
 
 `python3 model_evaluation.py`
