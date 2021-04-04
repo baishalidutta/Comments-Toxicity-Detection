@@ -83,6 +83,9 @@ def evaluate_accuracy_score(preprocessing, prediction_binary):
 
 
 def execute():
+    """
+    Imports the test data and prepares ROC and Accuracy
+    """
     test_data = prepare_test_data()
     preprocessing = DataPreprocess(test_data, do_load_existing_tokenizer=True)
     prediction = make_prediction(preprocessing)
