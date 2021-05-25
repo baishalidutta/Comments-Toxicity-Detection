@@ -3,4 +3,4 @@ gradio>=1.5.3
 numpy>=1.19.5
 nltk~=3.5
 textblob~=0.15.3
-tensorflow-cpu>=2.4.1
+tensorflow>=2.4.1
