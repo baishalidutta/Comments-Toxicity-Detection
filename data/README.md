@@ -2,7 +2,7 @@
 
 The dataset can be downloaded from [kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
 
-## Instructions to follow
+## Instructions
 
 * Navigate to `data` section
 * In the `Data Explorer`, you will find four separate zip archives to download
