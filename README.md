@@ -14,6 +14,7 @@
 </p>
 
 ## Motivation
+
 People tend to discuss or share opinions on social platforms but such activities sometimes encounter threats or harassments which compel people to not express themselves properly.
 
 Many social platforms try to find out such harassments or threats in conversations so that such conversations can easily be prevented before it causes any further damage.
@@ -42,7 +43,7 @@ In this model, many toxic comments have been fed to build a `Bidirectional Long 
 
 You can downloaded the dataset from [kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge). Use the underlying download link to download the dataset.
 
-### Instructions to follow
+### Instructions
 
 * Navigate to `data` section
 * In the `Data Explorer`, you will find four separate zip archives to download
