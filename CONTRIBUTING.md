@@ -13,6 +13,7 @@ Here is a (non-exclusive, non-prioritized) list of things you might be able to h
 * tests
 
 ### File Headers
+
 A proper header must be in place for any file contributed to the project. For a new contribution, please add the below header:
 
 ```python
@@ -30,7 +31,7 @@ __version__ = "VERSION_NUMBER"
 __author__ = "Author Name <legal entity> and others"
 __copyright__ = "Copyright (C) <year> Author Name <legal entity>"
 __license__ = "Apache License 2.0"
-__version__ = "VERSION_NUMBER"
+__version__ = "MAJOR.MINOR.FIX"
  ```
 
 ### How to Contribute
