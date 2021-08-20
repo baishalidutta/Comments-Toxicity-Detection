@@ -5,4 +5,4 @@ This directory comprises Global Vector or GloVe - an unsupervised learning algor
 ## Instructions to download
 
 * Extract the archive
-* Copy the directory contents to this folder
+* Copy the directory contents in this folder
