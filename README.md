@@ -90,7 +90,7 @@ Navigate to the `source` directory to execute the following source codes.
 
 `python3 model_training.py`
 
-* You can also provide your own data:
+* You can also provide your own CSV data:
 
 `python3 model_training.py --data=csv_file_location`
 
