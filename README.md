@@ -2,7 +2,7 @@
   <img width="621" alt="logo" src="https://user-images.githubusercontent.com/76659596/105877123-eb112280-5fff-11eb-9425-8432e693f92e.png">
 </p>
 
-[![online hosted application](https://img.shields.io/static/v1?label=Try-It-Out&message=Online-Hosted-Application&color=yellow&logo=godot-engine)](https://gradio.app/g/baishalidutta/Comments-Toxicity-Detection)
+[![online hosted application](https://img.shields.io/static/v1?label=Try-It-Out&message=Online-Hosted-Application&color=yellow&logo=godot-engine)](https://huggingface.co/spaces/Baishali/Comments-Toxicity-Detection)
 [![License - Apache-2.0](https://img.shields.io/badge/License-Apache-blue)](#license)
 [![Build - Passing](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/baishalidutta/Comments-Toxicity-Detection/runs/1485969918)
 [![GitHub release](https://img.shields.io/github/release/baishalidutta/Comments-Toxicity-Detection?include_prereleases&sort=semver)](https://github.com/baishalidutta/Comments-Toxicity-Detection/releases/)
