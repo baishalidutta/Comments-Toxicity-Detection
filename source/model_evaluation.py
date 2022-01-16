@@ -10,7 +10,7 @@ __version__ = "0.1"
 import numpy as np
 import pandas as pd
 from keras.models import load_model
-from sklearn.metrics import roc_auc_score, accuracy_score
+from sklearn.metrics import roc_auc_score, accuracy_score, classification_report
 
 from config import *
 from data_preprocessing import DataPreprocess
@@ -65,6 +65,7 @@ def evaluate_roc_auc(preprocessing, prediction_binary):
         auc = roc_auc_score(preprocessing.target_classes[:, j], prediction_binary[:, j])
         aucs.append(auc)
 
+    print(f"roc_aucs of all classes - {aucs}")
     return np.mean(aucs)
 
 
@@ -79,6 +80,7 @@ def evaluate_accuracy_score(preprocessing, prediction_binary):
         acc = accuracy_score(preprocessing.target_classes[:, j], prediction_binary[:, j])
         accuracy.append(acc)
 
+    print(f"accuracies of all classes - {accuracy}")
     return np.mean(accuracy)
 
 
@@ -91,6 +93,8 @@ def execute():
     prediction = make_prediction(preprocessing)
     roc_auc = evaluate_roc_auc(preprocessing, prediction > 0.5)
     accuracy = evaluate_accuracy_score(preprocessing, prediction > 0.5)
+    clf_report = classification_report(preprocessing, prediction > 0.5)
+    print(clf_report)
 
     print(f'Average ROC_AUC Score on Test Data: {roc_auc}')
     print(f'Average Accuracy Score on Test Data: {accuracy}')
